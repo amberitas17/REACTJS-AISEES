@@ -17,7 +17,6 @@ import Webcam from "react-webcam";
 import * as cvstfjs from "@microsoft/customvision-tfjs";
 
 function App() {
-  const modelPath = "assets";
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
