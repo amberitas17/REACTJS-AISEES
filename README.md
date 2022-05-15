@@ -6,6 +6,6 @@ How to Run The App:
 
 1. Run ``npm install`` in the command prompt
 
-2. Run ``node server.js`` in the ai-sees Github Repo
+2. Run ``node server.js`` in the ai-sees Github Repo or the server folder
 
 3. Run ``npm start`` 
