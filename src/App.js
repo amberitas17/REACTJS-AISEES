@@ -41,7 +41,7 @@ function App() {
       // Load the model.json file from the modelPath defined in the Dynamic Properties above
       await model.loadModelAsync("http://localhost:81/model.json");
       const predictions = await model.executeAsync(
-      document.getElementById("img")
+        document.getElementById("img")
       );
       var cnvs = document.getElementById("myCanvas");
       cnvs.style.position = "absolute";
@@ -102,12 +102,9 @@ function App() {
     >
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            Ai-Sees
-          </Typography>
+            <img src = "AI-Sees white.png" width="250px" height="80px"/>
         </Toolbar>
       </AppBar>
-
       <Box mt={1} />
       <Grid
         container
