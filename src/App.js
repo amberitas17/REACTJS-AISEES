@@ -6,11 +6,9 @@ import {
   Toolbar,
   Typography,
   Box,
-  IconButton,
   Button,
 } from "@material-ui/core";
 import "./App.css";
-import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Webcam from "react-webcam";
@@ -49,13 +47,13 @@ function App() {
       cnvs.style.position = "absolute";
       var ctx = cnvs.getContext("2d");
       ctx.clearRect(0, 0, cnvs.width, cnvs.height);
-      console.log(predictions);
+      console.log(predictions[0]);
       if (predictions[0].length > 0) {
         for (let n = 0; n < predictions[0].length; n++) {
     // Check scores
           if (predictions[1][n] > 0.5) {
             const p = document.createElement("p");
-            p.innerText = "Pill" + ": " + Math.round(parseFloat(predictions[1][n]) * 100) + "%";
+            p.innerText = "Dent" + ": " + Math.round(parseFloat(predictions[1][n]) * 100) + "%";
             let bboxLeft = predictions[0][n][0] * webcamRef.current.video.videoWidth;
             let bboxTop = predictions[0][n][1] * webcamRef.current.video.videoHeight;
             let bboxWidth = predictions[0][n][2] * webcamRef.current.video.videoWidth - bboxLeft;
@@ -64,7 +62,8 @@ function App() {
             ctx.font = "28px Arial";
             ctx.fillStyle = "red";
             // eslint-disable-next-line no-useless-concat
-            ctx.fillText( "Dent" + ": " + "Scratch" + ": " + Math.round(parseFloat(predictions[1][n]) * 100) + "%", bboxLeft, bboxTop + 70 );
+            //"Scratch" + ": " +
+            ctx.fillText( "Dent" + ": " + Math.round(parseFloat(predictions[1][n]) * 100) + "%", bboxLeft, bboxTop + 70 );
             ctx.rect(bboxLeft, bboxTop + 80, bboxWidth, bboxHeight);
             ctx.strokeStyle = "#FF0000";
             ctx.lineWidth = 3;
@@ -85,8 +84,8 @@ function App() {
 
 
   const videoConstraints = {
-    height: 1080,
-    width: 1920,
+    height: 520,
+    width: 1000,
     // height: 120,
     facingMode: "environment",
   };
@@ -98,21 +97,13 @@ function App() {
         height: "100%",
         marginTop: -8,
         backgroundImage:
-          "radial-gradient( circle 993px at 0.5% 50.5%,  rgba(137,171,245,0.37) 0%, rgba(245,247,252,1) 100.2% )",
+          "radial-gradient( circle 993px at 0.5% 50.5%,  rgba(192,192,192,0.3) 0%, rgba(192,192,192,0.3) 100.2% )",
       }}
     >
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Pill Detection
+            Ai-Sees
           </Typography>
         </Toolbar>
       </AppBar>
@@ -121,12 +112,10 @@ function App() {
       <Grid
         container
         style={{
-          height: "100vh",
-          width: "100%",
           alignItems: "center",
           justifyContent: "center",
           display: "flex",
-          padding: 20,
+          padding: 10,
         }}
       >
         <Grid
@@ -149,7 +138,7 @@ function App() {
                 variant={"contained"}
                 style={{
                   color: "white",
-                  backgroundColor: "blueviolet",
+                  backgroundColor: "blue",
                   width: "50%",
                   maxWidth: "250px",
                 }}
